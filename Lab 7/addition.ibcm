@@ -1,0 +1,25 @@
+C005	000				jmp		start	skip around the variables
+0000	001								declaring f
+0000	002								declaring s
+0000	003								declaring t
+0000	004								declaring 0
+1000	005		start	readh			reading in f
+4001	006				store 	f
+1000	007				readh			reading in s
+4002	008				store 	s 		
+1000	009				readh			readin in t
+4003	00A				store	t
+3004	00B				load	0		setting accumulator to 0
+5001	00C				add 	f		adding f to accumulator
+5002	00D				add 	s 		adding s to accumulator
+5003	00E				add 	t 		adding t to accumulator
+1800	00F				printh			printing sum
+D012	010		xit		jmpe			if sum is 0, skip loop and print f s t
+C005	011		loop	jmp 			loop to beginning
+3001	012				load	f 		
+1800	013				printh			printing f
+3002	014				load	s 		
+1800	015				printh			printing s
+3003	016				load	t
+1800	017				printh
+0000	018

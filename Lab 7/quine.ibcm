@@ -1,0 +1,17 @@
+C004	000				jmp		start	skip around the variables
+3000	001		loadit			3000	declaring loadit
+0010	002		size					declaring size
+0001	003		one				1		declaring 1
+3002	004		loop	load 	size
+6050	005				sub		i
+E010	006		 		jmpl	end
+3001	007				load 	loadit
+5050	008				add 	i
+400A	009				store 	doit	
+300A	00A		doit
+1800	00B		printh
+3050	00C				load 	i
+5003	00D				add		1
+4050	00E				store 	i
+C004	00F				jmp 	loop
+0000	010		halt

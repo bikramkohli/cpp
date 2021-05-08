@@ -1,0 +1,75 @@
+C009	000				jmp		start	skip around the variables
+0000	001		i						declaring i (counter)
+0000	002		n						declaring n (size)
+0060	003		a 				0100	declaring a[]
+4000	004		storeit			4000	declaring storeit (val to add)
+0000	005		zero					declaring 0
+0001	006		one						declaring 1
+3000	007		loadit			3000
+0000	008		
+1000	009		readh					reading in n
+4002	00A				store	n 		
+C00D	00B						
+0000	00C				
+3002	00D		loop	load	n		if (i >= n)
+6001	00E				sub		i 		
+E022	00F
+D022	010
+3004	011				load	storeit
+5003	012				add 	a
+5001	013				add 	i
+4016	014				store   doit
+1000	015		readh					reading in value
+0000	016		doit
+C01B	017
+0000	018
+0000	019
+0000	01A
+3001	01B				load	i
+5006	01C				add 	one
+4001	01D				store 	i
+C00D	01E				jmp
+C022	01F
+0000	020
+0000	021
+3005	022				load	0
+4001	023				store 	i
+3002	024		loop	load	n		if (i >= n)
+6001	025				sub		i
+E038	026
+D038	027
+3007	028				load	loadit
+5003	029				add 	a
+5001	02A				add 	i
+402C	02B				store 	doit
+0000	02C		doit
+1800	02D				printh			printing value in array
+C031	02E
+0000	02F
+0000	030
+3001	031				load 	i
+5006	032				add 	one
+4001	033				store 	i
+C024	034				jmp
+C037	035
+0000	036
+0000	037
+3002	038				load 	n
+6006	039				sub		1
+4001	03A				store 	i
+3001	03B		loop	load 	i
+E050	03C
+3007	03D				load 	loadit
+5003	03E				add 	a
+5001	03F				add 	i
+4041	040				store 	doit
+0000	041		doit
+1800	042			printh				printing value in array
+C046	043
+0000	044
+0000	045
+3001	046				load 	i
+6006	047				sub		1
+4001	048				store 	i
+C03B	049				jmp
+0000	050

@@ -1,0 +1,119 @@
+C00D	000				jmp		start	skip around the variables
+0000	001		i				0		declaring i
+0000	002		j 				0		declaring j
+000A	003		n 				10		declaring n
+0080	004		a 				80		declaring a[]
+4000	005		storeit			4000	declaring storeit
+0000	006		zero			0		declaring 0
+0001	007		one				1		declaring 1
+0000	008		temp			0		declaring temp
+3000	009		loadit			3000	declaring loadit
+0000	00A 	A1				0		declaring A[j]
+0000	00B		A2				0		declaring A[j-1]
+0008	00C		eight			8		declaring 8
+3003	00D		loop	load	n		if (i >= n)
+6001	00E				sub		i 		
+D01D	00F				jmpe			if i == n, stop reading in inputs
+3005	010				load	storeit	
+5004	011				add		a
+5001	012				add 	i
+4015	013				store 	doit
+1000	014				readh			reading in value
+0000	015		doit
+3001	016				load	i
+5007	017				add		one		incrementing i
+4001	018				store 	i
+C00D	019				jmp 			going to start of loop
+0000	01A
+0000	01B
+0000	01C
+3006	01D				load	0
+4001	01E				store 	i 		setting i to 0
+3003	01F		i loop	load	n 		if (i >= n)
+6001	020				sub		i 		
+D067	021				jmpe			if i == n
+3003	022				load	n
+6007	023				sub		1
+4002	024				store 	j 		setting j to n - 1
+3002	025		j loop	load	j 		
+6001	026				sub		i
+D061	027				jmpe			if j == i
+3009	028				load 	loadit
+5004	029				add		a
+5002	02A				add 	j 		A[j] (+3000) in the accumulator
+402E	02B				store 	doit
+6007	02C				sub		1		A[j-1] (+3000) in the accumulator
+4030	02D				store 	doit'
+0000	02E		doit
+400A	02F				store 	A1		setting A1 to A[j]
+0000	030		doit'
+400B	031				store 	A2		setting A2 to A[j-1]
+C036	032
+0000	033
+0000	034
+0000	035
+300B	036		if		load 	A2
+600A	037				sub		A1
+E05B	038				jmpl			if A1 > A2, then decrement j (basically end loop)
+3009	039		order	load 	loadit
+5004	03A				add		a
+5002	03B				add		j 		A[j] (+3000) in the accumulator
+403D	03C				store 	doit
+0000	03D		doit
+4008	03E				store 	temp	setting temp to A[j]
+3009	03F				load 	loadit
+5004	040				add 	a
+5002	041				add		j
+6007	042				sub 	one		A[j-1] (+3000) in the accumulator
+4044	043				store 	doit
+0000	044		doit
+400A	045				store 	A1		setting A[j] to A[j-1]
+3009	046				load 	loadit
+500C	047				add 	8		temp in the accumulator
+4049	048				store 	doit
+0000 	049		doit
+400B 	04A				store 	A2		setting A[j-1] to temp
+3005	04B				load 	storeit
+5004	04C				add		a
+5002	04D				add		j
+4050	04E				store 	doit
+300A	04F				load 	A1
+0000	050		doit					storing A1 in A[j]
+3005	051				load 	storeit
+5004	052				add		a
+5002	053				add  	j
+6007	054				sub 	one
+4057	055				store 	doit
+300B	056				load 	A2		storing A2 in A[j-1]
+0000	057		doit
+C05B	058
+0000	059
+0000	05A
+3002	05B		dec		load 	j 		decrementing j
+6007	05C				sub		1
+4002	05D				store 	j
+C025	05E				jmp 	j loop	starting j loop over
+C061	05F
+0000	060
+3001	061		inc 	load 	i 		incrementing i
+5007	062				add 	1
+4001	063				store  	i
+C01F	064				jmp 	i loop	starting i loop over
+C067	065
+0000	066
+3006	067		print	load 	0
+4001	068				store 	i 		setting i to 0
+3003	069		loop	load 	n
+6001	06A 			sub 	i
+D076 	06B				jmpe	end 	if i == n stop printing
+3009	06C				load 	loadit
+5004	06D				add 	a
+5001	06E				add 	i
+4070	06F				store 	doit
+0000	070		doit
+1800	071				printh
+3001	072				load 	i
+5007	073				add 	one
+4001	074				store 	i
+C069 	075				jmp 	loop
+0000	076		end
